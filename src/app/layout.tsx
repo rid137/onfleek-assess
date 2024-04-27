@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Sidebar from "./components/shared/sidebar";
+import MobileNav from "./components/shared/mobileNav";
+// import { GiNetworkBars } from "react-icons/gi";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +20,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+      <div className='bg-primary flex justify-center'>
+        <Sidebar />
+        <div className="md:hidden">
+          <MobileNav />
+        </div>
+        <div className="bg-white w-[100%] md:w-[93%] min-h-full md:rounded-tl-[3rem] md:rounded-bl-[3rem] p-3 sm:p-6 md:p-10">
+          {children}
+        </div>
+        
+      </div>
+      </body>
     </html>
   );
 }
